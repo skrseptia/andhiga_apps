@@ -44,11 +44,20 @@ class _DashboardState extends State<Dashboard> {
                             leading: GestureDetector(
                               behavior: HitTestBehavior.translucent,
                               onTap: () {},
-                              child: Image.network(items[index].image ?? ''),
+                              child: Container(
+                                height: 150,
+                                width: 80,
+                                child: Image.network(
+                                  items[index].image ?? '',
+                                  height: 150,
+                                  width: 100,
+                                ),
+                              ),
                             ),
                             title: Text(items[index].tittle ?? ''),
                             subtitle: Text(items[index].desc ?? ''),
                             trailing: Text(items[index].price ?? ''),
+                            
                             onTap: () => clickItem(items[index]));
                       },
                       itemCount: items.length),

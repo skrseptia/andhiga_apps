@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 import '../util/constant.dart';
 import '../models/item.dart';
 
-
 class Items with ChangeNotifier {
   late Item _item;
   List<Item> _items = [];
@@ -26,7 +25,7 @@ class Items with ChangeNotifier {
   }
 
   Future<void> fetchData() async {
-    const url = "${Constant.baseURL}/7b3d23c5-5ca5-41cb-9a56-673464995feb";
+    const url = "${Constant.baseURL}/903e9e29-7631-4194-b43a-abbb8b70f934";
 
     try {
       final response = await http.get(Uri.parse(url));
