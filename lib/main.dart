@@ -1,10 +1,14 @@
+// ignore_for_file: equal_keys_in_map
+
 import 'package:flutter/material.dart';
-import 'package:ikhsanproject/screen/tabs_screen.dart';
-import 'package:ikhsanproject/widgets/main_drawer.dart';
+import 'package:ikhsanproject/widgets/tabs_screen.dart';
 import 'package:provider/provider.dart';
-import 'screen/auth_screen.dart';
+import 'screen/authscreen/auth_screen.dart';
 import './providers/auth.dart';
-import 'screen/dashboard.dart';
+import 'screen/menu/dashboard.dart';
+import 'screen/menu/account.dart';
+
+import './providers/items.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,13 +42,21 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (ctx) => Auth(),
-          ),
-        ],
-        child: const MaterialApp(
-          home: AuthScreen(),
-        ));
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => Auth(),
+        ),
+        ChangeNotifierProvider(create: ((context) => Items())),
+      ],
+      child: MaterialApp(
+        home: const AuthScreen(),
+        routes: {
+          TabsScreen.routeName: (ctx) => const TabsScreen(),
+          AuthScreen.routeName: (ctx) => const AuthScreen(),
+          Dashboard.routeName: (ctx) => const Dashboard(),
+          Profil.routeName: (ctx) => const Profil(),
+        },
+      ),
+    );
   }
 }

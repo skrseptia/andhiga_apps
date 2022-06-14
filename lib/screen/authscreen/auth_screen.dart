@@ -1,10 +1,11 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, use_build_context_synchronously, must_call_super
 
 import 'package:flutter/material.dart';
+import 'package:ikhsanproject/widgets/tabs_screen.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/auth.dart';
-import '../models/http_exception.dart';
+import '../../providers/auth.dart';
+import '../../models/http_exception.dart';
 
 enum AuthMode { Signup, Login }
 
@@ -151,6 +152,7 @@ class _AuthCardState extends State<AuthCard>
           _authData['password'] as String,
         );
       }
+      Navigator.of(context).pushReplacementNamed(TabsScreen.routeName);
     } on HttpException catch (error) {
       var errorMessage = 'Authentication failed';
       if (error.toString().contains('EMAIL_EXISTS')) {

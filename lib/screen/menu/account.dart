@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Profil extends StatelessWidget {
+  static const routeName = '/profil';
+
   const Profil({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
@@ -11,7 +13,6 @@ class Profil extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color.fromARGB(255, 6, 20, 111),
       ),
-      home: const MyHomePage(title: 'Profil'),
     );
   }
 }
@@ -28,19 +29,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(),
+      body: const Center(),
     );
   }
 }
