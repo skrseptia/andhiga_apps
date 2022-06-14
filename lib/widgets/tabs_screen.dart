@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screen/menu/account.dart';
-import '../screen/menu/dashboard.dart';
+import '../screen/menu/dashboard/listmenu.dart';
 
 class TabsScreen extends StatefulWidget {
   static const routeName = '/home';

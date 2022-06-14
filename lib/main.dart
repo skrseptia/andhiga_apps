@@ -1,11 +1,12 @@
 // ignore_for_file: equal_keys_in_map
 
 import 'package:flutter/material.dart';
+import 'package:ikhsanproject/screen/menu/dashboard/home.dart';
 import 'package:ikhsanproject/widgets/tabs_screen.dart';
 import 'package:provider/provider.dart';
 import 'screen/authscreen/auth_screen.dart';
 import './providers/auth.dart';
-import 'screen/menu/dashboard.dart';
+import 'screen/menu/dashboard/listmenu.dart';
 import 'screen/menu/account.dart';
 
 import './providers/items.dart';

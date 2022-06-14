@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../providers/items.dart';
-import '../../models/item.dart';
+import '../../../providers/items.dart';
+import '../../../models/item.dart';
 import 'package:provider/provider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -44,7 +45,7 @@ class _DashboardState extends State<Dashboard> {
                             leading: GestureDetector(
                               behavior: HitTestBehavior.translucent,
                               onTap: () {},
-                              child: Container(
+                              child: SizedBox(
                                 height: 150,
                                 width: 80,
                                 child: Image.network(
@@ -57,7 +58,6 @@ class _DashboardState extends State<Dashboard> {
                             title: Text(items[index].tittle ?? ''),
                             subtitle: Text(items[index].desc ?? ''),
                             trailing: Text(items[index].price ?? ''),
-                            
                             onTap: () => clickItem(items[index]));
                       },
                       itemCount: items.length),
@@ -69,4 +69,6 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
+  
 }
+
