@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../providers/items.dart';
 import '../../../models/item.dart';
 import 'package:provider/provider.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -69,6 +69,4 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
-  
 }
-
