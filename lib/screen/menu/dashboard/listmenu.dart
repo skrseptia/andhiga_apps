@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ikhsanproject/screen/detailProduct/detail_product.dart';
 import '../../../providers/items.dart';
 import '../../../models/item.dart';
 import 'package:provider/provider.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -42,23 +42,28 @@ class _DashboardState extends State<Dashboard> {
                   child: ListView.builder(
                       itemBuilder: (context, index) {
                         return ListTile(
-                            leading: GestureDetector(
-                              behavior: HitTestBehavior.translucent,
-                              onTap: () {},
-                              child: SizedBox(
-                                height: 150,
-                                width: 80,
-                                child: Image.network(
-                                  items[index].image ?? '',
-                                  height: 150,
-                                  width: 100,
-                                ),
-                              ),
+                          leading: SizedBox(
+                            height: 150,
+                            width: 80,
+                            child: Image.network(
+                              items[index].image,
+                              height: 150,
+                              width: 100,
                             ),
-                            title: Text(items[index].tittle ?? ''),
-                            subtitle: Text(items[index].desc ?? ''),
-                            trailing: Text(items[index].price ?? ''),
-                            onTap: () => clickItem(items[index]));
+                          ),
+                          title: Text(items[index].tittle),
+                          subtitle: Text(items[index].desc),
+                          trailing: Text(items[index].price),
+                          onTap: () {
+                            var id = items[index].id;
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailProduct(id),
+                              ),
+                            );
+                          },
+                        );
                       },
                       itemCount: items.length),
                 );

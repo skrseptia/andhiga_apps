@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:provider/provider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class SliderMenu extends StatefulWidget {
@@ -29,54 +28,48 @@ class _SliderMenuState extends State<SliderMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Auto Slider Demo"),
-      ),
-      body: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CarouselSlider(
-                options: CarouselOptions(
-                    autoPlay: true,
-                    autoPlayInterval: const Duration(seconds: 3),
-                    autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    pauseAutoPlayOnTouch: true,
-                    enlargeCenterPage: true,
-                    viewportFraction: 0.8,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        _currentIndex = index;
-                      });
-                    }),
-                items: images.map((item) {
-                  return ItemCard(images: item.toString());
-                }).toList(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: map<Widget>(images, (index, url) {
-                  return Container(
-                    width: _currentIndex == index ? 30 : 10.0,
-                    height: 10.0,
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: _currentIndex == index
-                          ? Colors.blue
-                          : Colors.blue.withOpacity(0.3),
-                    ),
-                  );
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 230,
+          child: CarouselSlider(
+            options: CarouselOptions(
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 3),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                pauseAutoPlayOnTouch: true,
+                enlargeCenterPage: true,
+                viewportFraction: 0.8,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _currentIndex = index;
+                  });
                 }),
-              ),
-            ],
+            items: images.map((item) {
+              return ItemCard(images: item.toString());
+            }).toList(),
           ),
         ),
-      ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: map<Widget>(images, (index, url) {
+            return Container(
+              width: _currentIndex == index ? 30 : 10.0,
+              height: 10.0,
+              margin:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: _currentIndex == index
+                    ? Colors.blue
+                    : Colors.blue.withOpacity(0.3),
+              ),
+            );
+          }),
+        ),
+      ],
     );
   }
 }
@@ -91,9 +84,7 @@ class ItemCard extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       height: MediaQuery.of(context).size.height * 0.6,
-      child: Center(
-        child: Image.network(images),
-      ),
+      child: Image.network(images),
     );
   }
 }

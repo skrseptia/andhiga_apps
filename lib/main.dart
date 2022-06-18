@@ -1,5 +1,3 @@
-// ignore_for_file: equal_keys_in_map
-
 import 'package:flutter/material.dart';
 import 'package:ikhsanproject/screen/menu/dashboard/home.dart';
 import 'package:ikhsanproject/widgets/tabs_screen.dart';
@@ -11,9 +9,7 @@ import 'screen/menu/account.dart';
 
 import './providers/items.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -25,15 +21,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color.fromARGB(255, 6, 20, 111),
       ),
-      home: const MyHomePage(title: 'Angkringan Andhiga'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -50,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ChangeNotifierProvider(create: ((context) => Items())),
       ],
       child: MaterialApp(
-        home: const AuthScreen(),
+        home: HomeScreen(),
         routes: {
           TabsScreen.routeName: (ctx) => const TabsScreen(),
           AuthScreen.routeName: (ctx) => const AuthScreen(),

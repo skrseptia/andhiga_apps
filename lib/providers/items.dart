@@ -25,7 +25,7 @@ class Items with ChangeNotifier {
   }
 
   Future<void> fetchData() async {
-    const url = "${Constant.baseURL}/903e9e29-7631-4194-b43a-abbb8b70f934";
+    const url = "${Constant.baseURL}/061bc48b-f8f6-4102-97f7-a46d174e96ef";
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -37,5 +37,14 @@ class Items with ChangeNotifier {
     } catch (error) {
       log('provider.items.fetchData()', error: error);
     }
+  }
+
+  Item findById(String id) {
+    return _items.where((element) => element.id == id).first;
+  }
+
+  void selectMenu(Item item) {
+    _items = items;
+    notifyListeners();
   }
 }

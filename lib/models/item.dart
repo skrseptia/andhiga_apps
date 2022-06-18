@@ -2,20 +2,38 @@
 import 'dart:convert';
 
 class Item {
-  final String? tittle;
-  final String? price;
-  final String? image;
-  final String? desc;
- 
+  final String id;
+  final String tittle;
+  final String price;
+  final String image;
+  final String desc;
   Item({
-    this.tittle,
-    this.price,
-    this.image,
-    this.desc,
+    required this.id,
+    required this.tittle,
+    required this.price,
+    required this.image,
+    required this.desc,
   });
+
+  Item copyWith({
+    String? id,
+    String? tittle,
+    String? price,
+    String? image,
+    String? desc,
+  }) {
+    return Item(
+      id: id ?? this.id,
+      tittle: tittle ?? this.tittle,
+      price: price ?? this.price,
+      image: image ?? this.image,
+      desc: desc ?? this.desc,
+    );
+  }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'tittle': tittle,
       'price': price,
       'image': image,
@@ -25,10 +43,11 @@ class Item {
 
   factory Item.fromMap(Map<String, dynamic> map) {
     return Item(
-      tittle: map['tittle'] != null ? map['tittle'] as String : null,
-      price: map['price'] != null ? map['price'] as String : null,
-      image: map['image'] != null ? map['image'] as String : null,
-      desc: map['desc'] != null ? map['desc'] as String : null,
+      id: map['id'] as String,
+      tittle: map['tittle'] as String,
+      price: map['price'] as String,
+      image: map['image'] as String,
+      desc: map['desc'] as String,
     );
   }
 
@@ -39,21 +58,7 @@ class Item {
 
   @override
   String toString() {
-    return 'Item(tittle: $tittle, price: $price, image: $image, desc: $desc)';
-  }
-
-  Item copyWith({
-    String? tittle,
-    String? price,
-    String? image,
-    String? desc,
-  }) {
-    return Item(
-      tittle: tittle ?? this.tittle,
-      price: price ?? this.price,
-      image: image ?? this.image,
-      desc: desc ?? this.desc,
-    );
+    return 'Item(id: $id, tittle: $tittle, price: $price, image: $image, desc: $desc)';
   }
 
   @override
@@ -61,6 +66,7 @@ class Item {
     if (identical(this, other)) return true;
 
     return other is Item &&
+        other.id == id &&
         other.tittle == tittle &&
         other.price == price &&
         other.image == image &&
@@ -69,6 +75,10 @@ class Item {
 
   @override
   int get hashCode {
-    return tittle.hashCode ^ price.hashCode ^ image.hashCode ^ desc.hashCode;
+    return id.hashCode ^
+        tittle.hashCode ^
+        price.hashCode ^
+        image.hashCode ^
+        desc.hashCode;
   }
 }

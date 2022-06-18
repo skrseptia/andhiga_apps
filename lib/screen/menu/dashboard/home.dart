@@ -7,15 +7,23 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SliderMenu(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Angkringan Andhiga'),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 300, child: SliderMenu()),
+              SizedBox(
+                height: 500,
+                child: Dashboard(),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
-}
-
-@override
-Widget build(BuildContext context) {
-  return const Scaffold(
-    body: Dashboard(),
-  );
 }
