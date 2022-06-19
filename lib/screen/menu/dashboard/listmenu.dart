@@ -46,20 +46,20 @@ class _DashboardState extends State<Dashboard> {
                             height: 150,
                             width: 80,
                             child: Image.network(
-                              items[index].image,
+                              items[index].image!,
                               height: 150,
                               width: 100,
                             ),
                           ),
-                          title: Text(items[index].tittle),
-                          subtitle: Text(items[index].desc),
-                          trailing: Text(items[index].price),
+                          title: Text(items[index].name!),
+                          subtitle: Text(items[index].desc!),
+                          trailing: Text(items[index].price.toString()),
                           onTap: () {
                             var id = items[index].id;
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => DetailProduct(id),
+                                builder: (context) => DetailProduct(id!),
                               ),
                             );
                           },

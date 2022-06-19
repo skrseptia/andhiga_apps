@@ -25,7 +25,7 @@ class Items with ChangeNotifier {
   }
 
   Future<void> fetchData() async {
-    const url = "${Constant.baseURL}/061bc48b-f8f6-4102-97f7-a46d174e96ef";
+    const url = "${Constant.baseURL}/items.json";
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -39,7 +39,7 @@ class Items with ChangeNotifier {
     }
   }
 
-  Item findById(String id) {
+  Item findById(int id) {
     return _items.where((element) => element.id == id).first;
   }
 

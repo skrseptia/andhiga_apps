@@ -3,6 +3,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ikhsanproject/models/item_cart.dart';
+import 'package:ikhsanproject/providers/cart.dart';
 import 'package:provider/provider.dart';
 
 import 'package:ikhsanproject/models/item.dart';
@@ -10,7 +12,7 @@ import 'package:ikhsanproject/models/item.dart';
 import '../../providers/items.dart';
 
 class DetailProduct extends StatefulWidget {
-  final String id;
+  final int id;
   const DetailProduct(
     this.id, {
     Key? key,
@@ -42,10 +44,12 @@ class _DetailProductState extends State<DetailProduct> {
 
   @override
   Widget build(BuildContext context) {
+    var cart = Provider.of<Cart>(context, listen: true);
     var item = Provider.of<Items>(context, listen: false).findById(widget.id);
-    int total =int.parse(item.price) * int.parse('$_counter');
+    double total = item.price! * double.parse('$_counter');
     log(item.toString());
     return Scaffold(
+      appBar: AppBar(title: Text('Detail Menu')),
       body: Stack(
         children: [
           Container(
@@ -53,7 +57,7 @@ class _DetailProductState extends State<DetailProduct> {
             height: MediaQuery.of(context).size.height * .6,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(item.image),
+                image: NetworkImage(item.image!),
                 fit: BoxFit.cover,
               ),
             ),
@@ -89,7 +93,7 @@ class _DetailProductState extends State<DetailProduct> {
                       children: [
                         Expanded(
                           child: Text(
-                            item.tittle,
+                            item.name!,
                             style: GoogleFonts.ptSans(
                               fontSize: 36,
                               fontWeight: FontWeight.bold,
@@ -107,7 +111,7 @@ class _DetailProductState extends State<DetailProduct> {
                       right: 30,
                     ),
                     child: Text(
-                      item.desc,
+                      item.desc!,
                       style: GoogleFonts.ptSans(
                         fontSize: 14,
                         color: Colors.black,
@@ -124,7 +128,7 @@ class _DetailProductState extends State<DetailProduct> {
                     child: Row(
                       children: [
                         Text(
-                          item.price,
+                          item.price.toString(),
                           style: GoogleFonts.ptSans(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
@@ -217,6 +221,12 @@ class _DetailProductState extends State<DetailProduct> {
                           child: InkWell(
                             onTap: () {
                               print('Klik');
+                              cart.addToCart(ItemCart(
+                                  id: 1,
+                                  itemId: "1",
+                                  qty: "10",
+                                  subtotal: "100000"));
+                              print(cart.carts);
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(

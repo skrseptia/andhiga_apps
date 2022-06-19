@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ikhsanproject/providers/cart.dart';
 import 'package:ikhsanproject/screen/menu/dashboard/home.dart';
+import 'package:ikhsanproject/screen/order.dart';
 import 'package:ikhsanproject/widgets/tabs_screen.dart';
 import 'package:provider/provider.dart';
 import 'screen/authscreen/auth_screen.dart';
@@ -38,13 +40,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (ctx) => Auth(),
-        ),
+        ChangeNotifierProvider(create: (ctx) => Auth()),
         ChangeNotifierProvider(create: ((context) => Items())),
+        ChangeNotifierProvider(create: ((context) => Cart())),
       ],
       child: MaterialApp(
-        home: AuthScreen(),
+        home: CartScreen(),
+        // initialRoute: TabsScreen.routeName,
         routes: {
           TabsScreen.routeName: (ctx) => const TabsScreen(),
           AuthScreen.routeName: (ctx) => const AuthScreen(),
