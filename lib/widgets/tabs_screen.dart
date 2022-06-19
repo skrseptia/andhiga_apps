@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ikhsanproject/screen/menu/dashboard/home.dart';
 import '../screen/menu/account.dart';
 import '../screen/menu/dashboard/listmenu.dart';
 
@@ -19,11 +20,11 @@ class _TabsScreenState extends State<TabsScreen> {
   void initState() {
     _pages = [
       {
-        'page': const Dashboard(),
-        'title': "Dashboard",
+        'page': HomeScreen(),
+        'title': "HomeScreen",
       },
       {
-        'page': const Profil(),
+        'page': Profil(),
         'title': "Profil",
       },
     ];

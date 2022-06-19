@@ -26,6 +26,7 @@ class _DetailProductState extends State<DetailProduct> {
   }
 
   int _counter = 0;
+  late int finalprice;
 
   void _incrementCounter() {
     setState(() {
@@ -42,6 +43,7 @@ class _DetailProductState extends State<DetailProduct> {
   @override
   Widget build(BuildContext context) {
     var item = Provider.of<Items>(context, listen: false).findById(widget.id);
+    int total =int.parse(item.price) * int.parse('$_counter');
     log(item.toString());
     return Scaffold(
       body: Stack(
@@ -141,7 +143,7 @@ class _DetailProductState extends State<DetailProduct> {
                             _decrementCounter();
                           }
                         },
-                        tooltip: 'Decrement',
+                        heroTag: 'Decrement',
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(10.0),
@@ -158,7 +160,7 @@ class _DetailProductState extends State<DetailProduct> {
                       ),
                       FloatingActionButton(
                         onPressed: _incrementCounter,
-                        tooltip: 'Increment',
+                        heroTag: 'Increment',
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(10.0),
@@ -199,7 +201,7 @@ class _DetailProductState extends State<DetailProduct> {
                                     fontSize: 14, color: Colors.black),
                               ),
                               Text(
-                                'RP 25.000.00',
+                                total.toString(),
                                 style: GoogleFonts.ptSans(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,

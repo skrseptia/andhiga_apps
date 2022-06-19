@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ChangeNotifierProvider(create: ((context) => Items())),
       ],
       child: MaterialApp(
-        home: HomeScreen(),
+        home: AuthScreen(),
         routes: {
           TabsScreen.routeName: (ctx) => const TabsScreen(),
           AuthScreen.routeName: (ctx) => const AuthScreen(),

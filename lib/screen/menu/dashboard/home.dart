@@ -8,9 +8,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Angkringan Andhiga'),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
