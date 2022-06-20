@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ikhsanproject/screen/menu/dashboard/home.dart';
 import '../screen/menu/account.dart';
-import '../screen/menu/dashboard/listmenu.dart';
+
+import '../screen/menu/transaksi.dart';
 
 class TabsScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -22,6 +23,10 @@ class _TabsScreenState extends State<TabsScreen> {
       {
         'page': HomeScreen(),
         'title': "HomeScreen",
+      },
+      {
+        'page': Transaksi(),
+        'title': "Transaksi",
       },
       {
         'page': Profil(),
@@ -54,12 +59,17 @@ class _TabsScreenState extends State<TabsScreen> {
         items: [
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).colorScheme.primary,
-            icon: const Icon(Icons.account_balance),
+            icon: const Icon(Icons.home),
             label: 'Dashboard',
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).colorScheme.primary,
-            icon: const Icon(Icons.people),
+            icon: const Icon(Icons.swap_horiz_sharp),
+            label: 'Transaksi',
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            icon: const Icon(Icons.person),
             label: 'Profil',
           ),
         ],

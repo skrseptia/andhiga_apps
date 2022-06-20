@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:ikhsanproject/screen/detailProduct/detail_product.dart';
-import '../../../providers/items.dart';
-import '../../../models/item.dart';
+import '../../../../../providers/items.dart';
+import '../../../../../models/item.dart';
 import 'package:provider/provider.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
-  static const routeName = '/dashboard';
+class ListMenuSemua extends StatefulWidget {
+  const ListMenuSemua({Key? key}) : super(key: key);
+  static const routeName = '/ListMenuSemua';
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  State<ListMenuSemua> createState() => _ListMenuSemuaState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _ListMenuSemuaState extends State<ListMenuSemua> {
   Future<void> fetchData(BuildContext context) async {
     await Provider.of<Items>(context, listen: false).fetchData();
   }

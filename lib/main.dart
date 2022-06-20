@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ikhsanproject/providers/cart.dart';
-import 'package:ikhsanproject/screen/menu/dashboard/home.dart';
-import 'package:ikhsanproject/screen/order.dart';
+
 import 'package:ikhsanproject/widgets/tabs_screen.dart';
 import 'package:provider/provider.dart';
 import 'screen/authscreen/auth_screen.dart';
 import './providers/auth.dart';
-import 'screen/menu/dashboard/listmenu.dart';
+import 'screen/menu/dashboard/ListMenu/tabs_screen_menu.dart';
 import 'screen/menu/account.dart';
 
 import './providers/items.dart';
@@ -45,12 +44,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ChangeNotifierProvider(create: ((context) => Cart())),
       ],
       child: MaterialApp(
-        home: CartScreen(),
+        home: AuthScreen(),
         // initialRoute: TabsScreen.routeName,
         routes: {
           TabsScreen.routeName: (ctx) => const TabsScreen(),
           AuthScreen.routeName: (ctx) => const AuthScreen(),
-          Dashboard.routeName: (ctx) => const Dashboard(),
+          TabsScreenMenu.routeName: (ctx) => const TabsScreenMenu(),
           Profil.routeName: (ctx) => const Profil(),
         },
       ),
