@@ -43,8 +43,9 @@ class Items with ChangeNotifier {
     return _items.where((element) => element.id == id).first;
   }
 
- 
-  
+  List<Item> filterByCategory(String category) {
+    return _items.where((element) => element.category == category).toList();
+  }
 
   void selectMenu(Item item) {
     _items = items;

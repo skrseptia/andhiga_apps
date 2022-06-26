@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -13,17 +14,10 @@ class Cart with ChangeNotifier {
     if (itemExist != null) {
       var oldQty = itemExist.qty;
       var newQty = oldQty + itemCart.qty;
-      print("old => $oldQty new => $newQty");
       itemExist.qty = newQty;
-      print("item exist $itemExist");
     } else {
       _carts.add(itemCart);
     }
-
-    // var itemExist = _carts.where((e) => e.id == 1111).first;
-    // print("test");
-    // print(itemExist);
-
     notifyListeners();
   }
 
@@ -33,7 +27,8 @@ class Cart with ChangeNotifier {
   }
 
   void removeItemById(int id) {
-    // _carts.remove(())
+    var item = _carts.firstWhere((element) => element.id == id);
+    _carts.remove(item);
     notifyListeners();
   }
 }

@@ -2,92 +2,91 @@
 import 'dart:convert';
 
 class Item {
-  String? desc;
   int? id;
-  String? image;
   String? name;
+  String? desc;
   double? price;
-  String? food;
+  String? image;
+  String? category;
   Item({
-    this.desc,
     this.id,
-    this.image,
     this.name,
+    this.desc,
     this.price,
-    this.food,
+    this.image,
+    this.category,
   });
-  
-  
 
   Item copyWith({
-    String? desc,
     int? id,
-    String? image,
     String? name,
+    String? desc,
     double? price,
-    String? food,
+    String? image,
+    String? category,
   }) {
     return Item(
-      desc: desc ?? this.desc,
       id: id ?? this.id,
-      image: image ?? this.image,
       name: name ?? this.name,
+      desc: desc ?? this.desc,
       price: price ?? this.price,
-      food: food ?? this.food,
+      image: image ?? this.image,
+      category: category ?? this.category,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'desc': desc,
       'id': id,
-      'image': image,
       'name': name,
+      'desc': desc,
       'price': price,
-      'food': food,
+      'image': image,
+      'category': category,
     };
   }
 
   factory Item.fromMap(Map<String, dynamic> map) {
     return Item(
-      desc: map['desc'] != null ? map['desc'] as String : null,
       id: map['id'] != null ? map['id'] as int : null,
-      image: map['image'] != null ? map['image'] as String : null,
       name: map['name'] != null ? map['name'] as String : null,
+      desc: map['desc'] != null ? map['desc'] as String : null,
       price: map['price'] != null ? map['price'] as double : null,
-      food: map['food'] != null ? map['food'] as String : null,
+      image: map['image'] != null ? map['image'] as String : null,
+      category: map['category'] != null ? map['category'] as String : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Item.fromJson(String source) => Item.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Item.fromJson(String source) =>
+      Item.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'Item(desc: $desc, id: $id, image: $image, name: $name, price: $price, food: $food)';
+    return 'Item(id: $id, name: $name, desc: $desc, price: $price, image: $image, category: $category)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is Item &&
-      other.desc == desc &&
-      other.id == id &&
-      other.image == image &&
-      other.name == name &&
-      other.price == price &&
-      other.food == food;
+        other.id == id &&
+        other.name == name &&
+        other.desc == desc &&
+        other.price == price &&
+        other.image == image &&
+        other.category == category;
   }
 
   @override
   int get hashCode {
-    return desc.hashCode ^
-      id.hashCode ^
-      image.hashCode ^
-      name.hashCode ^
-      price.hashCode ^
-      food.hashCode;
+    return id.hashCode ^
+        name.hashCode ^
+        desc.hashCode ^
+        price.hashCode ^
+        image.hashCode ^
+        category.hashCode;
   }
 }
