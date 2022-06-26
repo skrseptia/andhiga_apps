@@ -9,10 +9,9 @@ import 'screen/menu/account.dart';
 
 import './providers/items.dart';
 
-void main() => runApp( MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  
   const MyApp({Key? key}) : super(key: key);
 
   @override
@@ -44,8 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ChangeNotifierProvider(create: ((context) => Cart())),
       ],
       child: MaterialApp(
-        home: AuthScreen(),
-        // initialRoute: TabsScreen.routeName,
+        // home: AuthScreen(),
+        initialRoute: TabsScreen.routeName,
         routes: {
           TabsScreen.routeName: (ctx) => const TabsScreen(),
           AuthScreen.routeName: (ctx) => const AuthScreen(),

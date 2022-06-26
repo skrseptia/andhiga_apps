@@ -1,10 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
-import 'package:ikhsanproject/models/item_cart.dart';
 import 'package:ikhsanproject/providers/cart.dart';
 import 'package:provider/provider.dart';
-import 'package:provider/provider.dart';
-import '../../providers/items.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/CartScreen';
@@ -40,7 +38,7 @@ class CartScreen extends StatelessWidget {
                       subtitle: Text(cart.carts.toList()[i].qty),
                     );
                   }),
-                  itemCount: 2,
+                  itemCount: cart.carts.length,
                 ),
               ),
             ],

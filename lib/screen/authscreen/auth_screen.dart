@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names, use_build_context_synchronously, must_call_super
+// ignore_for_file: constant_identifier_names, use_build_context_synchronously, must_call_super, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:ikhsanproject/widgets/tabs_screen.dart';

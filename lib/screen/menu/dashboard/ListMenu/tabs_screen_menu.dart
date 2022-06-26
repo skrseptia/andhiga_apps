@@ -28,8 +28,10 @@ class _TabsScreenMenuState extends State<TabsScreenMenu>
     _activeTabIndex = _tabController.index;
   }
 
+
   @override
   Widget build(BuildContext context) {
+  debugPrint("Active tab $_activeTabIndex");
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
