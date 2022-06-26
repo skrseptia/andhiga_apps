@@ -52,7 +52,13 @@ class CartScreen extends StatelessWidget {
                                 onPressed: () => cart.addQty(itemOnCart),
                                 child: Text("+")),
                             ElevatedButton(
-                                onPressed: () => cart.minusQty(itemOnCart),
+                                onPressed: () {
+                                  if (qty > 1) {
+                                    cart.minusQty(itemOnCart);
+                                  }
+                                },
+
+                                // onPressed: () => cart.minusQty(itemOnCart),
                                 child: Text("-")),
                           ],
                         ),
