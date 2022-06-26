@@ -14,13 +14,13 @@ class TabsScreenMenu extends StatefulWidget {
 class _TabsScreenMenuState extends State<TabsScreenMenu>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  late int _activeTabIndex;
+  int _activeTabIndex = 0;
 
   @override
   void initState() {
     _tabController = TabController(vsync: this, length: 3);
     _tabController.addListener(_setActiveTabIndex);
-
+    
     super.initState();
   }
 
@@ -28,10 +28,9 @@ class _TabsScreenMenuState extends State<TabsScreenMenu>
     _activeTabIndex = _tabController.index;
   }
 
-
   @override
   Widget build(BuildContext context) {
-  debugPrint("Active tab $_activeTabIndex");
+    debugPrint("Active tab $_activeTabIndex");
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,

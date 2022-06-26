@@ -243,7 +243,7 @@ class _DetailProductState extends State<DetailProduct> {
                                   name: item.name!,
                                   price: item.price!,
                                   id: item.id!,
-                                  qty: "$_counter",
+                                  qty: _counter,
                                   subtotal: total));
                               Navigator.push(
                                 context,

@@ -5,7 +5,7 @@ class ItemCart {
   int? id;
   String name;
   double price;
-  String qty;
+  int qty;
   double subtotal;
   ItemCart({
     this.id,
@@ -14,13 +14,12 @@ class ItemCart {
     required this.qty,
     required this.subtotal,
   });
- 
 
   ItemCart copyWith({
     int? id,
     String? name,
     double? price,
-    String? qty,
+    int? qty,
     double? subtotal,
   }) {
     return ItemCart(
@@ -47,14 +46,15 @@ class ItemCart {
       id: map['id'] != null ? map['id'] as int : null,
       name: map['name'] as String,
       price: map['price'] as double,
-      qty: map['qty'] as String,
+      qty: map['qty'] as int,
       subtotal: map['subtotal'] as double,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ItemCart.fromJson(String source) => ItemCart.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ItemCart.fromJson(String source) =>
+      ItemCart.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -64,21 +64,21 @@ class ItemCart {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is ItemCart &&
-      other.id == id &&
-      other.name == name &&
-      other.price == price &&
-      other.qty == qty &&
-      other.subtotal == subtotal;
+        other.id == id &&
+        other.name == name &&
+        other.price == price &&
+        other.qty == qty &&
+        other.subtotal == subtotal;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      price.hashCode ^
-      qty.hashCode ^
-      subtotal.hashCode;
+        name.hashCode ^
+        price.hashCode ^
+        qty.hashCode ^
+        subtotal.hashCode;
   }
 }
