@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ikhsanproject/screen/cartScreen/cartScreen.dart';
 import 'package:ikhsanproject/screen/menu/dashboard/home.dart';
 import '../screen/menu/account.dart';
 
@@ -7,9 +8,10 @@ import '../screen/menu/transaksi.dart';
 class TabsScreen extends StatefulWidget {
   static const routeName = '/home';
 
-  const TabsScreen({Key? key}) : super(key: key);
+  const TabsScreen( {Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _TabsScreenState createState() => _TabsScreenState();
 }
 
@@ -47,6 +49,22 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title'] as String),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: IconButton(
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartScreen(),
+                  ),
+                );
+              },
+            ),
+          )
+        ],
       ),
       body: _pages[_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(

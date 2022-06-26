@@ -43,7 +43,7 @@ class _TabsScreenMenuState extends State<TabsScreenMenu>
                 contentPadding: const EdgeInsets.symmetric(vertical: 10.0),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: new BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: Colors.white),
                 ),
                 fillColor: Colors.white,
                 filled: true),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ikhsanproject/providers/cart.dart';
-
 import 'package:ikhsanproject/widgets/tabs_screen.dart';
 import 'package:provider/provider.dart';
 import 'screen/authscreen/auth_screen.dart';
@@ -10,9 +9,10 @@ import 'screen/menu/account.dart';
 
 import './providers/items.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp( MyApp());
 
 class MyApp extends StatelessWidget {
+  
   const MyApp({Key? key}) : super(key: key);
 
   @override

@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ikhsanproject/models/item_cart.dart';
 import 'package:ikhsanproject/providers/cart.dart';
+import 'package:ikhsanproject/screen/cartScreen/cartScreen.dart';
 import 'package:provider/provider.dart';
-
+import '../../providers/cart.dart';
 import 'package:ikhsanproject/models/item.dart';
 
 import '../../providers/items.dart';
@@ -49,7 +50,25 @@ class _DetailProductState extends State<DetailProduct> {
     double total = item.price! * double.parse('$_counter');
     log(item.toString());
     return Scaffold(
-      appBar: AppBar(title: Text('Detail Menu')),
+      appBar: AppBar(
+        title: Text('Detail Menu'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: IconButton(
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartScreen(),
+                  ),
+                );
+              },
+            ),
+          )
+        ],
+      ),
       body: Stack(
         children: [
           Container(
@@ -220,13 +239,26 @@ class _DetailProductState extends State<DetailProduct> {
                           borderRadius: BorderRadius.circular(10),
                           child: InkWell(
                             onTap: () {
-                              print('Klik');
                               cart.addToCart(ItemCart(
-                                  id: 1,
-                                  itemId: "1",
-                                  qty: "10",
-                                  subtotal: "100000"));
-                              print(cart.carts);
+                                  name: item.name!,
+                                  price: item.price!,
+                                  id: item.id!,
+                                  qty: "$_counter",
+                                  subtotal: total));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CartScreen(),
+                                ),
+                              );
+                              // // print('Klik');
+                              // cart.addToCart(ItemCart(
+                              //     id: item.id,
+                              //     name: 'ayam',
+                              //     price: 2000,
+                              //     qty: '1',
+                              //     subtotal: 100000));
+                              // print(ItemCart);
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
