@@ -12,7 +12,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cart = Provider.of<Cart>(context, listen: false);
+    var cart = Provider.of<Cart>(context, listen: true);
     var items = Provider.of<Items>(context, listen: false);
 
     return Scaffold(
@@ -28,6 +28,9 @@ class CartScreen extends StatelessWidget {
                   itemBuilder: ((context, i) {
                     var itemOnCart = cart.carts[i];
                     var item = items.findById(itemOnCart.id!);
+                    int qty = itemOnCart.qty;
+                    double price = item.price!;
+                    double subtotal = price * price;
 
                     return ListTile(
                       leading: SizedBox(
@@ -40,7 +43,20 @@ class CartScreen extends StatelessWidget {
                         ),
                       ),
                       title: Text(item.name!),
-                      subtitle: Text(itemOnCart.qty.toString()),
+                      subtitle: Text("$qty x $price = $subtotal"),
+                      trailing: SizedBox(
+                        width: 140,
+                        child: Row(
+                          children: [
+                            ElevatedButton(
+                                onPressed: () => cart.addQty(itemOnCart),
+                                child: Text("+")),
+                            ElevatedButton(
+                                onPressed: () => cart.minusQty(itemOnCart),
+                                child: Text("-")),
+                          ],
+                        ),
+                      ),
                     );
                   }),
                   itemCount: cart.carts.length,

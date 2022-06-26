@@ -31,4 +31,14 @@ class Cart with ChangeNotifier {
     _carts.remove(item);
     notifyListeners();
   }
+
+  void addQty(ItemCart itemCart) {
+    itemCart.qty += 1;
+    notifyListeners();
+  }
+
+  void minusQty(ItemCart itemCart) {
+    itemCart.qty -= 1;
+    notifyListeners();
+  }
 }
