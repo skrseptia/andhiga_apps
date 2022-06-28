@@ -30,7 +30,7 @@ class CartScreen extends StatelessWidget {
                     var item = items.findById(itemOnCart.id!);
                     int qty = itemOnCart.qty;
                     double price = item.price!;
-                    double subtotal = price * price;
+                    double subtotal = price * qty;
 
                     return ListTile(
                       leading: SizedBox(
@@ -48,18 +48,26 @@ class CartScreen extends StatelessWidget {
                         width: 140,
                         child: Row(
                           children: [
-                            ElevatedButton(
-                                onPressed: () => cart.addQty(itemOnCart),
-                                child: Text("+")),
-                            ElevatedButton(
-                                onPressed: () {
-                                  if (qty > 1) {
-                                    cart.minusQty(itemOnCart);
-                                  }
-                                },
-
-                                // onPressed: () => cart.minusQty(itemOnCart),
-                                child: Text("-")),
+                            SizedBox(
+                              height: 45,
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    if (qty > 1) {
+                                      cart.minusQty(itemOnCart);
+                                    }
+                                  },
+                                  child: Text("-")),
+                            ),
+                            SizedBox(
+                              height: 40,
+                              child: Center(child: Text('$qty')),
+                            ),
+                            SizedBox(
+                              height: 45,
+                              child: ElevatedButton(
+                                  onPressed: () => cart.addQty(itemOnCart),
+                                  child: Text("+")),
+                            ),
                           ],
                         ),
                       ),
