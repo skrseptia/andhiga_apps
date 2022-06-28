@@ -49,21 +49,44 @@ class CartScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             SizedBox(
-                              height: 45,
+                              width: 45,
                               child: ElevatedButton(
                                   onPressed: () {
                                     if (qty > 1) {
                                       cart.minusQty(itemOnCart);
+                                    } else {
+                                      showDialog(
+                                        context: context,
+                                        builder: (ctx) => AlertDialog(
+                                          content: const Text(
+                                              'Apakah anda yakin untuk menghapus?'),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              child: const Text('Tidak'),
+                                              onPressed: () {
+                                                Navigator.of(ctx).pop(false);
+                                              },
+                                            ),
+                                            TextButton(
+                                              child: const Text('Ya'),
+                                              onPressed: () {
+                                                Navigator.of(ctx).pop(true);
+                                                cart.removeItemById(item.id!);
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      );
                                     }
                                   },
                                   child: Text("-")),
                             ),
                             SizedBox(
-                              height: 40,
+                              width: 40,
                               child: Center(child: Text('$qty')),
                             ),
                             SizedBox(
-                              height: 45,
+                              width: 45,
                               child: ElevatedButton(
                                   onPressed: () => cart.addQty(itemOnCart),
                                   child: Text("+")),
